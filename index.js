@@ -14,6 +14,7 @@ const morgan = require('morgan')
 morgan.token('req-body', (req) => { return JSON.stringify(req.body) })
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :req-body'))
 
+// Route definitions
 app.get('/', (req, res) => {
   res.send('<h1>Hello World!</h1>')
 })
@@ -85,6 +86,7 @@ app.put('/api/persons/:id', (req, res, next) => {
     .catch(error => next(error))
 })
 
+// Error handler
 const errorHandler = (error, req, res, next) => {
   console.error(error.message)
 
