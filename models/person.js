@@ -6,7 +6,7 @@ mongoose.set('strictQuery', false)
 
 console.log('connecting to', url)
 mongoose.connect(url)
-  .then(result => {
+  .then(() => {
     console.log('connected to MongoDB')
   })
   .catch((error) => {
@@ -25,7 +25,7 @@ const personSchema = new mongoose.Schema({
       validator: function(v) {
         return /\d{2,3}-\d+/.test(v)
       },
-      message: `That does not look like a phone number.`
+      message: 'That does not look like a phone number.'
     },
     minlength: 8,
     required: true
